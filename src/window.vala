@@ -22,6 +22,9 @@ namespace Cuer {
 		[GtkChild]
 		Camera camera;
 		[GtkChild]
+		History history;
+
+		[GtkChild]
 		Gtk.Button btnCameraStop;
 		[GtkChild]
 		Gtk.Button btnCameraPlay;
@@ -29,10 +32,6 @@ namespace Cuer {
 		Gtk.Button btnHistoryClear;
 		[GtkChild]
 		Gtk.Stack stack;
-		[GtkChild]
-		Gtk.Label lblCode;
-		[GtkChild]
-		Gtk.Revealer revealer;
 
 		construct {
 			camera.notify["state"].connect(this.updateBtns);
@@ -74,20 +73,42 @@ namespace Cuer {
 
 		//[GtkCallback]
 		public void on_code(string code){
-			this.lblCode.set_label(code);
-			this.revealer.set_reveal_child(true);
-		}
+			camera.stop();
 
-		[GtkCallback]
-		public void on_btnForget_clicked(){
-			this.revealer.set_reveal_child(false);
-		}
-
-		[GtkCallback]
-		public void on_btnCopy_clicked(){
 			Gtk.Clipboard clip = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
-			clip.set_text(this.lblCode.label, this.lblCode.label.length);
+			clip.set_text(code, code.length);
+
+
+			Gtk.RecentManager rm = Gtk.RecentManager.get_default();
+			rm.add_full(code, Gtk.RecentData() {
+				display_name = code,
+				description = "",
+				mime_type = "text/plain",
+				app_name = "",
+				app_exec = "",
+				groups = new string[0],
+				is_private = true
+			});
+
+
+			stdout.printf("%s\n", code);
+
+			string summary = "QRCode found";
+			try {
+				Notify.Notification notification = new Notify.Notification (summary, code, null);
+				notification.add_action ("action-name", "Open in browser", (notification, action) => {
+					try {
+						notification.close ();
+					} catch (Error e) {
+						debug ("Error: %s", e.message);
+					}
+				});
+				notification.show ();
+			} catch (Error e) {
+				error ("Error: %s", e.message);
+			}
 		}
 
 	}
 }
+

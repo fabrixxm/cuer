@@ -1,4 +1,4 @@
-/* main.vala
+/* history.vala
  *
  * Copyright (C) 2017 fabrixxm
  *
@@ -16,20 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-int main (string[] args) {
-	Gtk.init (ref args);
-	Gst.init (ref args);
-	Notify.init ("Cuer");
-	var app = new Gtk.Application ("org.gnome.Cuer", ApplicationFlags.FLAGS_NONE);
-	app.activate.connect (() => {
-		var win = app.active_window;
-		if (win == null) {
-			var cwin = new Cuer.Window (app);
-			cwin.present_and_play();
-		} else {
-			win.present();
-		}
-	});
+namespace Cuer {
+	//[GtkTemplate (ui = "/org/gnome/Cuer/history.ui")]
+	public class History : Gtk.ScrolledWindow {
+		construct {
 
-	return app.run (args);
+		}
+
+		public History () {
+			Object ();
+		}
+
+
+	}
 }
