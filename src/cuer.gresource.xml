@@ -3,7 +3,4 @@
   <gresource prefix="/org/gnome/Cuer">
     <file>window.ui</file>
   </gresource>
-  <gresource prefix="/org/gnome/Cuer">
-    <file>history.ui</file>
-  </gresource>
 </gresources>

@@ -2,7 +2,6 @@ cuer_sources = [
   'main.vala',
   'window.vala',
   'camera.vala',
-  'history.vala',
 ]
 
 cuer_deps = [

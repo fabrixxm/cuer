@@ -22,7 +22,7 @@ namespace Cuer {
 		[GtkChild]
 		Camera camera;
 		[GtkChild]
-		History history;
+		Gtk.RecentManager recent;
 
 		[GtkChild]
 		Gtk.Button btnCameraStop;
@@ -79,8 +79,7 @@ namespace Cuer {
 			clip.set_text(code, code.length);
 
 
-			Gtk.RecentManager rm = Gtk.RecentManager.get_default();
-			rm.add_full(code, Gtk.RecentData() {
+			recent.add_full(code, Gtk.RecentData() {
 				display_name = code,
 				description = "",
 				mime_type = "text/plain",
