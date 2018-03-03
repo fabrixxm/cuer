@@ -5,7 +5,7 @@ Cuer is a QRCode reader application for the GNOME desktop wich uses the webcam
 ## Requirements:
 
 - gstreamer >= 1.0
-- [gst-plugin-qrcode](https://github.com/fabrixxm/gst-plugin-qrcode)
+- [gst-plugin-qrcode](https://github.com/fabrixxm/gst-plugin-qrcode) ([AUR](https://aur.archlinux.org/packages/gst-plugin-qrcode/))
 - Gtk >= 3.10
 
 to build:
@@ -13,6 +13,7 @@ to build:
 - Vala
 - Meson
 - Ninja
+- GNOME Builder
 
 ## Build
 
@@ -20,5 +21,7 @@ to build:
 	$ cd builddir
 	$ ninja
 	$ ./src/cuer
+
+or use GNOME Builder.
 
 
