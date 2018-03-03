@@ -1,6 +1,6 @@
 /* window.vala
  *
- * Copyright (C) 2017 fabrixxm
+ * Copyright (C) 2018 fabrixxm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,17 +21,22 @@ namespace Cuer {
 	public class Window : Gtk.ApplicationWindow {
 		[GtkChild]
 		Camera camera;
-		[GtkChild]
-		Gtk.RecentManager recent;
 
 		[GtkChild]
 		Gtk.Button btnCameraStop;
 		[GtkChild]
 		Gtk.Button btnCameraPlay;
 		[GtkChild]
-		Gtk.Button btnHistoryClear;
-		[GtkChild]
 		Gtk.Stack stack;
+
+		[GtkChild]
+		Gtk.RecentManager recent;
+		[GtkChild]
+		Gtk.RecentChooserWidget history;
+		[GtkChild]
+		Gtk.Button btnHistoryClear;
+
+
 
 		construct {
 			camera.notify["state"].connect(this.updateBtns);
@@ -75,10 +80,6 @@ namespace Cuer {
 		public void on_code(string code){
 			camera.stop();
 
-			Gtk.Clipboard clip = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
-			clip.set_text(code, code.length);
-
-
 			recent.add_full(code, Gtk.RecentData() {
 				display_name = code,
 				description = "",
@@ -89,25 +90,36 @@ namespace Cuer {
 				is_private = true
 			});
 
+			show_notification(code);
+		}
+
+		public void show_notification(string code) {
+			Gtk.Clipboard clip = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
+			clip.set_text(code, code.length);
 
 			stdout.printf("%s\n", code);
 
-			string summary = "QRCode found";
+			string summary = "QRCode";
 			try {
 				Notify.Notification notification = new Notify.Notification (summary, code, null);
-				notification.add_action ("action-name", "Open in browser", (notification, action) => {
+				/* notification.add_action ("action-name", "Open in browser", (notification, action) => {
 					try {
 						notification.close ();
 					} catch (Error e) {
 						debug ("Error: %s", e.message);
 					}
-				});
+				});*/
 				notification.show ();
 			} catch (Error e) {
 				error ("Error: %s", e.message);
 			}
 		}
 
+		[GtkCallback]
+		public void on_history_item_activated(){
+			Gtk.RecentInfo r = history.get_current_item();
+			show_notification(r.get_display_name());
+		}
 	}
 }
 

@@ -30,7 +30,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkRecentChooserWidget">
+          <object class="GtkRecentChooserWidget" id="history">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="filter">recentfilter</property>
@@ -39,6 +39,7 @@
             <property name="recent_manager">recent</property>
             <property name="show_private">True</property>
             <property name="sort_type">mru</property>
+            <signal name="item-activated" handler="on_history_item_activated" swapped="no"/>
           </object>
           <packing>
             <property name="name">page1</property>
@@ -64,17 +65,19 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="btnCameraPlay">
-            <property name="label">Scan</property>
-            <property name="visible">True</property>
+          <object class="GtkButton" id="btnCameraStop">
+            <property name="label">Stop</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="always_show_image">True</property>
           </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
         </child>
         <child>
-          <object class="GtkButton" id="btnCameraStop">
-            <property name="label">Stop</property>
+          <object class="GtkButton" id="btnCameraPlay">
+            <property name="label">Scan</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
