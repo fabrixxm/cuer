@@ -5,12 +5,15 @@
   <object class="GtkListStore" id="store">
     <columns>
       <!-- column-name code -->
-      <column type="string"/>
+      <column type="gchararray"/>
       <!-- column-name date -->
-      <column type="string"/>
+      <column type="gchararray"/>
     </columns>
     <data>
-      <row/>
+      <row>
+        <col id="0" translatable="yes">codice</col>
+        <col id="1" translatable="yes">tempo fa</col>
+      </row>
     </data>
   </object>
   <template class="CuerHistory" parent="GtkScrolledWindow">
@@ -32,6 +35,28 @@
             <property name="enable_grid_lines">horizontal</property>
             <child internal-child="selection">
               <object class="GtkTreeSelection"/>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="code">
+                <property name="title" translatable="yes">Code</property>
+                <child>
+                  <object class="GtkCellRendererText" id="code_renderer"/>
+                  <attributes>
+                    <attribute name="text">0</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn" id="date">
+                <property name="title" translatable="yes">Date</property>
+                <child>
+                  <object class="GtkCellRendererText" id="date_renderer"/>
+                  <attributes>
+                    <attribute name="text">1</attribute>
+                  </attributes>
+                </child>
+              </object>
             </child>
           </object>
         </child>

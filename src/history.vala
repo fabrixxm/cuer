@@ -17,15 +17,38 @@
  */
 
 namespace Cuer {
-	//[GtkTemplate (ui = "/org/gnome/Cuer/history.ui")]
+	[GtkTemplate (ui = "/org/gnome/Cuer/history.ui")]
 	public class History : Gtk.ScrolledWindow {
-		construct {
+		private Gtk.RecentManager rm;
+		[GtkChild]
+		Gtk.ListStore store;
 
+		construct {
+			this.rm = Gtk.RecentManager.get_default();
+			this.rm.changed.connect(this.updatelist);
+			this.updatelist();
 		}
 
 		public History () {
 			Object ();
 		}
+
+		public void updatelist() {
+			this.store.clear();
+			Gtk.TreeIter iter;
+			foreach(Gtk.RecentInfo info in this.rm.get_items()) {
+				if (info.has_application("cuer")){
+					stdout.printf(": %s\n", info.get_display_name());
+					this.store.append(out iter);
+					this.store.set(iter,
+					 	0 , info.get_display_name(),
+					 	1 , "some time ago"
+					);
+				}
+			}
+		}
+
+
 
 
 	}

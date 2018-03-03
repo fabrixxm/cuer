@@ -84,8 +84,8 @@ namespace Cuer {
 				display_name = code,
 				description = "",
 				mime_type = "text/plain",
-				app_name = "",
-				app_exec = "",
+				app_name = "cuer",
+				app_exec = "cuer",
 				groups = new string[0],
 				is_private = true
 			});
