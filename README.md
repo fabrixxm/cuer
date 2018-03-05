@@ -2,6 +2,8 @@
 
 Cuer is a QRCode reader application for the GNOME desktop wich uses the webcam
 
+![ScreenShot](screenshot.png)
+
 ## Requirements:
 
 - gstreamer >= 1.0
@@ -23,5 +25,3 @@ to build:
 	$ ./src/cuer
 
 or use GNOME Builder.
-
-
