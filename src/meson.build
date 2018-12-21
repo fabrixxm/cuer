@@ -15,8 +15,16 @@ gnome = import('gnome')
 
 cuer_sources += gnome.compile_resources('cuer-resources',
   'cuer.gresource.xml',
-  c_name: 'cuer'
+  c_name: 'cuer',
+  export: true,
 )
+
+cuer_sources += gnome.compile_resources('cuer-icon-resources',
+  join_paths(icons_dir, 'icons.gresource.xml'),
+  c_name: 'cuer_icons',
+  export: true,
+)
+
 
 executable('cuer', cuer_sources,
   vala_args: '--target-glib=2.50',

@@ -39,6 +39,8 @@ namespace Cuer {
 
 
 		construct {
+		    set_icon_name("org.gnome.Cuer");
+
 			camera.notify["state"].connect(this.updateBtns);
 
 			btnCameraPlay.clicked.connect(camera.play);

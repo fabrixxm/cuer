@@ -1,7 +1,9 @@
 [Desktop Entry]
-Name=cuer
+Name=Cuer
+Comment=Read QRCodes
 Exec=cuer
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=GNOME;GTK;Utility;
 StartupNotify=true
+Icon=org.gnome.Cuer
