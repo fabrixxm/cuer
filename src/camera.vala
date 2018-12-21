@@ -48,7 +48,7 @@ namespace Cuer {
 
 			if (source == null || videoconvert1 == null || qrcodedec == null || gtksink == null ||
 				videoconvert2 == null || pipeline == null) {
-					stderr.puts ("Not all elements could be created.\n");
+					critical("Not all elements could be created.");
 					return;
 			}
 
@@ -56,7 +56,7 @@ namespace Cuer {
 
 
 			if ( !source.link(videoconvert1) || !videoconvert1.link(qrcodedec) || !qrcodedec.link(videoconvert2) || !videoconvert2.link(gtksink) ) {
-				stderr.puts ("Elements could not be linked.\n");
+				critical("Elements could not be linked.");
 				return;
 			}
 
@@ -91,13 +91,13 @@ namespace Cuer {
 		private bool bus_callback (Gst.Bus bus, Gst.Message message) {
 		    switch (message.type) {
 		    case MessageType.ERROR:
-		        GLib.Error err;
-		        string debug;
-		        message.parse_error (out err, out debug);
-		        stderr.printf ("Error: %s\n", err.message);
+		        GLib.Error err; string debugstr;
+		        message.parse_error (out err, out debugstr);
+		        debug(debugstr);
+		        critical(err.message);
 		        break;
 		    case MessageType.EOS:
-		        stdout.printf ("end of stream\n");
+		        debug("end of stream");
 		        break;
 		    case MessageType.STATE_CHANGED:
 		        Gst.State oldstate;
@@ -106,9 +106,9 @@ namespace Cuer {
 		        message.parse_state_changed (out oldstate, out newstate,
 		                                     out pending);
 
-		        //stdout.printf ("state changed: %s->%s:%s\n",
-		          //             oldstate.to_string (), newstate.to_string (),
-		            //           pending.to_string ());
+		        debug("state changed: %s->%s:%s\n",
+                        oldstate.to_string (), newstate.to_string (),
+                        pending.to_string ());
 
 
 				this.state = newstate;
@@ -125,7 +125,7 @@ namespace Cuer {
 			// Start playing:
 			Gst.StateChangeReturn ret = pipeline.set_state (Gst.State.PLAYING);
 			if (ret == Gst.StateChangeReturn.FAILURE) {
-				stderr.printf ("Unable to set the pipeline to the playing state.\n");
+				critical("Unable to set the pipeline to the playing state.");
 				return;
 			}
 
@@ -136,13 +136,14 @@ namespace Cuer {
 			// Stop playing:
 			Gst.StateChangeReturn ret = pipeline.set_state (Gst.State.PAUSED);
 			if (ret == Gst.StateChangeReturn.FAILURE) {
-				stderr.printf ("Unable to set the pipeline to the playing state.\n");
+				critical("Unable to set the pipeline to the playing state.");
 				return;
 			}
 		}
 
 		[GtkCallback]
 		private void on_qrcode(string codestr) {
+		    debug("on_qrcode: %s", codestr);
 			this.code_ready(codestr);
 		}
 	}

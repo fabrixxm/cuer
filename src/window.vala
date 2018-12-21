@@ -99,7 +99,7 @@ namespace Cuer {
 			Gtk.Clipboard clip = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD);
 			clip.set_text(code, code.length);
 
-			stdout.printf("%s\n", code);
+			debug("show notification: %s", code);
 
 			string summary = "QRCode";
 			try {
@@ -113,7 +113,7 @@ namespace Cuer {
 				});*/
 				notification.show ();
 			} catch (Error e) {
-				error ("Error: %s", e.message);
+				critical("Error: %s", e.message);
 			}
 		}
 
