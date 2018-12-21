@@ -103,7 +103,7 @@ namespace Cuer {
 
 			string summary = "QRCode";
 			try {
-				Notify.Notification notification = new Notify.Notification (summary, code, null);
+				Notify.Notification notification = new Notify.Notification (summary, code, "org.gnome.Cuer");
 				/* notification.add_action ("action-name", "Open in browser", (notification, action) => {
 					try {
 						notification.close ();
