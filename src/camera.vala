@@ -37,24 +37,25 @@ namespace Cuer {
 			Gtk.Widget video_area;
 
 			var source = ElementFactory.make ("v4l2src", "source");
+			var videoconvert1 = ElementFactory.make ("videoconvert", "convert1");
 			qrcodedec = ElementFactory.make ("qrcodedec", "qrcodedec1");
-			var videoconvert = ElementFactory.make ("videoconvert", "convert1");
+			var videoconvert2 = ElementFactory.make ("videoconvert", "convert2");
 			var gtksink = ElementFactory.make ("gtksink", "sink");
 			gtksink.get ("widget", out video_area);
 
 			// Build the pipeline:
 			pipeline = new Gst.Pipeline ("test-pipeline");
 
-			if (source == null || qrcodedec == null || gtksink == null ||
-				videoconvert == null || pipeline == null) {
+			if (source == null || videoconvert1 == null || qrcodedec == null || gtksink == null ||
+				videoconvert2 == null || pipeline == null) {
 					stderr.puts ("Not all elements could be created.\n");
 					return;
 			}
 
-			pipeline.add_many (source, qrcodedec, videoconvert, gtksink);
+			pipeline.add_many (source, videoconvert1, qrcodedec, videoconvert2, gtksink);
 
 
-			if ( !source.link(qrcodedec) || !qrcodedec.link(videoconvert) || !videoconvert.link(gtksink) ) {
+			if ( !source.link(videoconvert1) || !videoconvert1.link(qrcodedec) || !qrcodedec.link(videoconvert2) || !videoconvert2.link(gtksink) ) {
 				stderr.puts ("Elements could not be linked.\n");
 				return;
 			}
