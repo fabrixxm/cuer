@@ -61,7 +61,7 @@ namespace Cuer {
 			}
 
 			// qrcode event
-			Signal.connect_swapped(qrcodedec, "qrcode", (Callback) on_qrcode, this);
+			//Signal.connect_swapped(qrcodedec, "qrcode", (Callback) on_qrcode, this);
 
 
 			// qrcodedec.qrcode.connect(on_qrcode);
@@ -90,31 +90,37 @@ namespace Cuer {
 
 		private bool bus_callback (Gst.Bus bus, Gst.Message message) {
 		    switch (message.type) {
-		    case MessageType.ERROR:
-		        GLib.Error err; string debugstr;
-		        message.parse_error (out err, out debugstr);
-		        debug(debugstr);
-		        critical(err.message);
-		        break;
-		    case MessageType.EOS:
-		        debug("end of stream");
-		        break;
-		    case MessageType.STATE_CHANGED:
-		        Gst.State oldstate;
-		        Gst.State newstate;
-		        Gst.State pending;
-		        message.parse_state_changed (out oldstate, out newstate,
-		                                     out pending);
+		        case MessageType.ERROR:
+		            GLib.Error err; string debugstr;
+		            message.parse_error (out err, out debugstr);
+		            debug(debugstr);
+		            critical(err.message);
+		            break;
+		        case MessageType.EOS:
+		            debug("end of stream");
+		            break;
+		        case MessageType.STATE_CHANGED:
+		            Gst.State oldstate;
+		            Gst.State newstate;
+		            Gst.State pending;
+		            message.parse_state_changed (out oldstate, out newstate,
+		                                         out pending);
 
-		        debug("state changed: %s->%s:%s\n",
-                        oldstate.to_string (), newstate.to_string (),
-                        pending.to_string ());
+		            debug("state changed: %s->%s:%s\n",
+                            oldstate.to_string (), newstate.to_string (),
+                            pending.to_string ());
 
 
-				this.state = newstate;
-		        break;
-		    default:
-		        break;
+				    this.state = newstate;
+		            break;
+		        case MessageType.ELEMENT:
+                    Gst.Structure* s = message.get_structure();
+                    if(s->get_name() == "qrcode") {
+                        this.code_ready(s->get_string("symbol"));
+                    }
+		            break;
+		        default:
+		            break;
 		    }
 
 		    return true;
@@ -144,7 +150,7 @@ namespace Cuer {
 		[GtkCallback]
 		private void on_qrcode(string codestr) {
 		    debug("on_qrcode: %s", codestr);
-			this.code_ready(codestr);
+			//this.code_ready(codestr);
 		}
 	}
 }

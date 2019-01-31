@@ -1,6 +1,6 @@
 # Cuer
 
-Cuer is a QRCode reader application for the GNOME desktop wich uses the webcam
+Cuer is a QRCode reader application for the GNOME desktop
 
 ![ScreenShot](screenshot.png)
 
