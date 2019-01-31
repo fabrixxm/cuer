@@ -10,13 +10,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="512"
-   height="512"
-   viewBox="0 0 135.46666 135.46667"
+   width="128"
+   height="128"
+   viewBox="0 0 33.866665 33.866667"
    version="1.1"
    id="svg8"
-   sodipodi:docname="cuer.svg"
-   inkscape:version="0.92.2 2405546, 2018-03-11"
+   sodipodi:docname="org.gnome.Cuer.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
    inkscape:export-filename="/home/fabio/progetti/cuer/cuer/data/cuer.png"
    inkscape:export-xdpi="96.000008"
    inkscape:export-ydpi="96.000008">
@@ -96,20 +96,21 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="303.44699"
-     inkscape:cy="290.17786"
+     inkscape:cx="91.314955"
+     inkscape:cy="286.13725"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:snap-page="false"
      units="px"
      inkscape:snap-global="false"
-     inkscape:window-width="1600"
-     inkscape:window-height="829"
+     inkscape:window-width="2048"
+     inkscape:window-height="1088"
      inkscape:window-x="0"
-     inkscape:window-y="29"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:pagecheckerboard="true" />
+     inkscape:pagecheckerboard="true"
+     borderlayer="true" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -126,10 +127,10 @@
      inkscape:label="Livello 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-161.53332)">
+     transform="translate(0,-263.13332)">
     <g
        id="g53807"
-       transform="matrix(0.94557609,0,0,0.94557609,3.6863196,8.7630301)">
+       transform="matrix(0.23780158,0,0,0.23780158,0.82624136,224.61251)">
       <rect
          rx="8.0631199"
          y="161.98718"

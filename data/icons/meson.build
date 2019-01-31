@@ -1,11 +1,20 @@
-icon_sizes = [
-  'scalable',
-  'symbolic'
-]
-
-foreach icon_size: icon_sizes
-  install_subdir(
-    'hicolor/' + icon_size,
-    install_dir: join_paths(datadir, 'icons', 'hicolor')
+install_data(
+  'org.gnome.Cuer.svg',
+  install_dir: join_paths(
+    datadir,
+    'icons',
+    'hicolor',
+    'scalable',
+    'apps'
   )
-endforeach
+)
+install_data(
+  'org.gnome.Cuer-symbolic.svg',
+  install_dir: join_paths(
+    datadir,
+    'icons',
+    'hicolor',
+    'symbolic',
+    'apps'
+  )
+)
