@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.3 -->
+<!-- Generated with glade 3.22.1 -->
 <interface>
-  <requires lib="gtk+" version="3.10"/>
+  <requires lib="gtk+" version="3.20"/>
   <object class="GtkRecentManager" id="recent">
     <property name="filename">/home/fabio/.local/share/recently-used.xbel</property>
   </object>
@@ -15,18 +15,66 @@
     <property name="default_width">600</property>
     <property name="default_height">300</property>
     <property name="show_menubar">False</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header_bar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="show_close_button">True</property>
+        <child>
+          <object class="GtkButton" id="btnCameraStop">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">media-playback-pause-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="btnCameraPlay">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">media-playback-start-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child type="title">
+          <object class="GtkStackSwitcher" id="stackSwitcher">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="stack">stack</property>
+          </object>
+        </child>
+      </object>
+    </child>
     <child>
       <object class="GtkStack" id="stack">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="events">GDK_STRUCTURE_MASK | GDK_PROPERTY_CHANGE_MASK</property>
         <child>
           <object class="CuerCamera" id="camera">
 		<property name="visible">True</property>
 		<property name="can_focus">False</property>
 	      </object>
           <packing>
-            <property name="name">page0</property>
-            <property name="title" translatable="yes">Scanner</property>
+            <property name="name">page_scan</property>
+            <property name="title" translatable="yes">Scan</property>
           </packing>
         </child>
         <child>
@@ -42,59 +90,9 @@
             <signal name="item-activated" handler="on_history_item_activated" swapped="no"/>
           </object>
           <packing>
-            <property name="name">page1</property>
-            <property name="title" translatable="yes">page1</property>
+            <property name="name">page_history</property>
+            <property name="title" translatable="yes">History</property>
             <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <child type="titlebar">
-      <object class="GtkHeaderBar" id="header_bar">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="title">QRCode Reader</property>
-        <property name="show_close_button">True</property>
-        <child>
-          <object class="GtkToggleButton" id="tglList">
-            <property name="label" translatable="yes">History</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="toggled" handler="toggleHistory" swapped="no"/>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="btnCameraStop">
-            <property name="label">Stop</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="always_show_image">True</property>
-          </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="btnCameraPlay">
-            <property name="label">Scan</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="always_show_image">True</property>
-          </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="btnHistoryClear">
-            <property name="label" translatable="yes">Clear</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-          </object>
-          <packing>
-            <property name="position">3</property>
           </packing>
         </child>
       </object>

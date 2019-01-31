@@ -20,6 +20,7 @@ int main (string[] args) {
 	Gtk.init (ref args);
 	Gst.init (ref args);
 	Notify.init ("Cuer");
+
 	var app = new Gtk.Application ("org.gnome.Cuer", ApplicationFlags.FLAGS_NONE);
 	app.activate.connect (() => {
 		var win = app.active_window;

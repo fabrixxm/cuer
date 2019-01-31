@@ -33,8 +33,6 @@ namespace Cuer {
 		Gtk.RecentManager recent;
 		[GtkChild]
 		Gtk.RecentChooserWidget history;
-		[GtkChild]
-		Gtk.Button btnHistoryClear;
 
 
 
@@ -47,6 +45,9 @@ namespace Cuer {
 			btnCameraStop.clicked.connect(camera.stop);
 
 			camera.code_ready.connect(on_code);
+			stack.notify.connect((sender, property) => {
+                this.updateBtns();
+            });
 
 		}
 
@@ -59,23 +60,10 @@ namespace Cuer {
 			camera.play();
 		}
 
-		[GtkCallback]
-		public void toggleHistory() {
-			if(this.stack.visible_child_name == "page0") {
-				this.stack.set_visible_child_full( "page1", Gtk.StackTransitionType.SLIDE_LEFT );
-				this.camera.stop();
-			} else {
-				this.stack.set_visible_child_full( "page0", Gtk.StackTransitionType.SLIDE_RIGHT );
-				this.camera.play();
-			}
-
-			this.updateBtns();
-		}
 
 		public void updateBtns() {
-			btnCameraPlay.visible = camera.state == Gst.State.PAUSED && this.stack.visible_child_name == "page0";
-			btnCameraStop.visible = camera.state == Gst.State.PLAYING && this.stack.visible_child_name == "page0";
-			btnHistoryClear.visible = this.stack.visible_child_name == "page1";
+			btnCameraPlay.visible = camera.state == Gst.State.PAUSED && this.stack.visible_child_name == "page_scan";
+			btnCameraStop.visible = camera.state == Gst.State.PLAYING && this.stack.visible_child_name == "page_scan";
 		}
 
 		//[GtkCallback]
