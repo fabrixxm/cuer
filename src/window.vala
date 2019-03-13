@@ -32,7 +32,9 @@ namespace Cuer {
 		[GtkChild]
 		Gtk.RecentManager recent;
 		[GtkChild]
-		Gtk.RecentChooserWidget history;
+		Gtk.RecentFilter recentFilter;
+		[GtkChild]
+		History history;
 
 
 
@@ -44,10 +46,14 @@ namespace Cuer {
 			btnCameraPlay.clicked.connect(camera.play);
 			btnCameraStop.clicked.connect(camera.stop);
 
+
 			camera.code_ready.connect(on_code);
 			stack.notify.connect((sender, property) => {
                 this.updateBtns();
             });
+
+            history.filter = recentFilter;
+            history.set_recent_manager(recent);
 
 		}
 
@@ -105,7 +111,6 @@ namespace Cuer {
 			}
 		}
 
-		[GtkCallback]
 		public void on_history_item_activated(){
 			Gtk.RecentInfo r = history.get_current_item();
 			show_notification(r.get_display_name());
