@@ -1,52 +1,101 @@
 {
-  "app-id": "org.gnome.Cuer",
-  "runtime": "org.gnome.Platform",
-  "runtime-version": "3.26",
-  "sdk": "org.gnome.Sdk",
-  "command": "cuer",
-  "finish-args": [
-    "--share=network",
-    "--share=ipc",
-    "--socket=x11",
-    "--socket=wayland",
-    "--filesystem=xdg-run/dconf",
-    "--filesystem=~/.config/dconf:ro",
-    "--talk-name=ca.desrt.dconf",
-    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
-  ],
-  "build-options": {
-    "cflags": "-O2 -g",
-    "cxxflags": "-O2 -g",
-    "env": {
-      "V": "1"
-    }
-  },
-  "cleanup": [
-    "/include",
-    "/lib/pkgconfig",
-    "/man",
-    "/share/doc",
-    "/share/gtk-doc",
-    "/share/man",
-    "/share/pkgconfig",
-    "/share/vala",
-    "*.la",
-    "*.a"
-  ],
-  "modules": [
-    {
-      "name": "cuer",
-      "buildsystem": "meson",
-      "config-opts": [
-        "--libdir=lib"
-      ],
-      "builddir": true,
-      "sources": [
-        {
-          "type": "git",
-          "url": "file:///home/fabio/progetti/cuer/cuer"
+    "app-id" : "org.gnome.Cuer",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "3.30",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "cuer",
+    "tags" : [
+        "devel",
+        "development",
+        "nightly"
+    ],
+    "finish-args" : [
+        "--share=network",
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--filesystem=xdg-run/dconf",
+        "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf",
+        "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
+        "--device=all"
+    ],
+    "build-options" : {
+        "cflags" : "-O2 -g",
+        "cxxflags" : "-O2 -g",
+        "env" : {
+            "V" : "1"
         }
-      ]
-    }
-  ]
+    },
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "/share/vala",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+        {
+            "name" : "libhandy",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dprofiling=false",
+                "-Dintrospection=enabled",
+                "-Dgtk_doc=false",
+                "-Dtests=false",
+                "-Dexamples=false",
+                "-Dvapi=true",
+                "-Dglade_catalog=disabled"
+            ],
+            "sources" : [
+                {
+                    "type": "git",
+                    "url" : "https://source.puri.sm/Librem5/libhandy.git",
+                    "tag" : "v0.0.9"
+                }
+            ]
+        },
+        {
+            "name": "quirc",
+            "buildsystem": "simple",
+            "build-commands": ["CFLAGS=\"$CFLAGS -fPIC\" make libquirc.so", "install -m 0644 lib/quirc.h $C_INCLUDE_PATH", "install -m 0755 libquirc.so.* $LD_LIBRARY_PATH", "ln -s $LD_LIBRARY_PATH/libquirc.so.* $LD_LIBRARY_PATH/libquirc.so"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url" : "https://github.com/dlbeer/quirc.git",
+                    "tag" : "v1.0"
+                }
+            ]
+        },
+        {
+            "name" : "gst-plugin-qrcode",
+            "buildsystem": "autotools",
+            "sources" : [
+                {
+                    "type": "git",
+                    "url" : "https://github.com/fabrixxm/gst-plugin-qrcode.git",
+                    "branch" : "develop"
+                }
+            ]
+        },
+        {
+            "name" : "cuer",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "--libdir=lib"
+            ],
+            "builddir" : true,
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "file:///home/fabio/progetti/cuer/cuer"
+                }
+            ]
+        }
+    ]
 }
