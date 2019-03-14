@@ -36,10 +36,24 @@ namespace Cuer {
 		[GtkChild]
 		History history;
 
+		[GtkChild]
+		Gtk.StackSwitcher topStackSwitcher;
+		[GtkChild]
+		Gtk.StackSwitcher bottomStackSwitcher;
+
+
 
 
 		construct {
 		    set_icon_name("org.gnome.Cuer");
+
+		    configure_event.connect(configure_callback);
+
+		    Gtk.CssProvider cssProvider = new Gtk.CssProvider();
+		    cssProvider.load_from_resource("/org/gnome/Cuer/cuer.css");
+
+            //var styleContext = get_style_context();
+            get_style_context().add_provider(cssProvider, 1);
 
 			camera.notify["state"].connect(this.updateBtns);
 
@@ -55,6 +69,27 @@ namespace Cuer {
             history.filter = recentFilter;
             history.set_recent_manager(recent);
 
+            adapt();
+		}
+
+		private void adapt() {
+            int w = get_allocated_width();
+            topStackSwitcher.set_visible( w >= 700 );
+            bottomStackSwitcher.set_visible( w < 700 );
+            /*
+            if (w >= 700) {
+                stack.child_set_property(camera, "icon-name", "");
+                stack.child_set_property(history, "icon-name", "");
+            } else {
+                stack.child_set_property(camera, "icon-name", "org.gnome.Cuer-symbolic");
+                stack.child_set_property(history, "icon-name", "document-open-recent-symbolic");
+            }
+            */
+		}
+
+		private bool configure_callback(Gtk.Widget window, Gdk.EventConfigure event) {
+            adapt();
+            return false;
 		}
 
 		public Window (Gtk.Application app) {

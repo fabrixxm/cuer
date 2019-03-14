@@ -4,8 +4,8 @@
   <requires lib="gtk+" version="3.20"/>
   <template class="CuerWindow" parent="GtkApplicationWindow">
     <property name="can_focus">False</property>
-    <property name="default_width">600</property>
-    <property name="default_height">300</property>
+    <property name="default_width">800</property>
+    <property name="default_height">600</property>
     <property name="show_menubar">False</property>
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header_bar">
@@ -46,7 +46,7 @@
           </packing>
         </child>
         <child type="title">
-          <object class="GtkStackSwitcher" id="stackSwitcher">
+          <object class="GtkStackSwitcher" id="topStackSwitcher">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="stack">stack</property>
@@ -55,28 +55,56 @@
       </object>
     </child>
     <child>
-      <object class="GtkStack" id="stack">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="events">GDK_STRUCTURE_MASK | GDK_PROPERTY_CHANGE_MASK</property>
+        <property name="orientation">vertical</property>
         <child>
-          <object class="CuerCamera" id="camera">
+          <object class="GtkStack" id="stack">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="events">GDK_STRUCTURE_MASK | GDK_PROPERTY_CHANGE_MASK</property>
+            <child>
+              <object class="CuerCamera" id="camera">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
           </object>
+              <packing>
+                <property name="name">page_scan</property>
+                <property name="title" translatable="yes">Scan</property>
+              </packing>
+            </child>
+            <child>
+              <object class="CuerHistory" id="history">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+              <packing>
+                <property name="name">page_history</property>
+                <property name="title" translatable="yes">History</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
           <packing>
-            <property name="name">page_scan</property>
-            <property name="title" translatable="yes">Scan</property>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
-          <object class="CuerHistory" id="history">
-            <property name="visible">True</property>
+          <object class="GtkStackSwitcher" id="bottomStackSwitcher">
             <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="margin_top">10</property>
+            <property name="margin_bottom">10</property>
+            <property name="icon_size">5</property>
+            <property name="stack">stack</property>
           </object>
           <packing>
-            <property name="name">page_history</property>
-            <property name="title" translatable="yes">History</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
             <property name="position">1</property>
           </packing>
         </child>

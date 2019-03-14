@@ -66,8 +66,8 @@ namespace Cuer {
             }
 
             if (before == null) {
-                    label.set_markup("<b>%d days ago</b>".printf(age));
-                    row.set_header(label);
+                label.set_markup("<b>%d days ago</b>".printf(age));
+                row.set_header(label);
             } else {
                 int bage = before.get_data("age");
                 if (age != bage) {
@@ -75,7 +75,7 @@ namespace Cuer {
                     row.set_header(label);
                 } else {
                     Hdy.list_box_separator_header(row, before, null);
-                    }
+                }
             }
         }
 
@@ -86,7 +86,7 @@ namespace Cuer {
 
             this.model.remove_all();
             items.foreach((item) => {
-                if (true) { //item.has_application("cuer")) {
+                if (item.has_application("cuer")) {
                     debug("append \"%s\"", item.get_display_name());
                     this.model.append(RecentObject.create(item));
                 }
