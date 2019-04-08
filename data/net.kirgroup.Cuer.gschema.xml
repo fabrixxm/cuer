@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="cuer">
-	<schema id="org.gnome.Cuer" path="/org/gnome/Cuer/">
+	<schema id="net.kirgroup.Cuer" path="/net/kirgroup/Cuer/">
 	</schema>
 </schemalist>

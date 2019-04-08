@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/org/gnome/Cuer">
+  <gresource prefix="/net/kirgroup/Cuer">
     <file>window.ui</file>
     <file>history.ui</file>
     <file>history_empty.ui</file>

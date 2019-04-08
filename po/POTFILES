@@ -1,9 +1,11 @@
-data/org.gnome.Cuer.desktop.in
-data/org.gnome.Cuer.appdata.xml.in
-data/org.gnome.Cuer.gschema.xml
+data/net.kirgroup.Cuer.desktop.in
+data/net.kirgroup.Cuer.appdata.xml.in
+data/net.kirgroup.Cuer.gschema.xml
 src/window.ui
 
 src/main.vala
 src/window.vala
-
+src/camera.vala
+src/historyempty.vala
+src/history.vala
 

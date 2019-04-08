@@ -17,7 +17,7 @@
  */
 
 namespace Cuer {
-	[GtkTemplate (ui = "/org/gnome/Cuer/history_empty.ui")]
+	[GtkTemplate (ui = "/net/kirgroup/Cuer/history_empty.ui")]
 	public class HistoryEmpty : Gtk.Box {
 	}
 }

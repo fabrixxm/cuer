@@ -17,7 +17,7 @@
  */
 
 namespace Cuer {
-	[GtkTemplate (ui = "/org/gnome/Cuer/window.ui")]
+	[GtkTemplate (ui = "/net/kirgroup/Cuer/window.ui")]
 	public class Window : Gtk.ApplicationWindow {
 		[GtkChild]
 		Camera camera;
@@ -43,12 +43,12 @@ namespace Cuer {
 
 
 		construct {
-		    set_icon_name("org.gnome.Cuer");
+		    set_icon_name("net.kirgroup.Cuer");
 
 		    configure_event.connect(configure_callback);
 
 		    Gtk.CssProvider cssProvider = new Gtk.CssProvider();
-		    cssProvider.load_from_resource("/org/gnome/Cuer/cuer.css");
+		    cssProvider.load_from_resource("/net/kirgroup/Cuer/cuer.css");
 
             //var styleContext = get_style_context();
             get_style_context().add_provider(cssProvider, 1);
@@ -79,7 +79,7 @@ namespace Cuer {
                 stack.child_set_property(camera, "icon-name", "");
                 stack.child_set_property(history, "icon-name", "");
             } else {
-                stack.child_set_property(camera, "icon-name", "org.gnome.Cuer-symbolic");
+                stack.child_set_property(camera, "icon-name", "net.kirgroup.Cuer-symbolic");
                 stack.child_set_property(history, "icon-name", "document-open-recent-symbolic");
             }
             */

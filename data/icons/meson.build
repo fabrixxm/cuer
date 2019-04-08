@@ -1,5 +1,5 @@
 install_data(
-  'org.gnome.Cuer.svg',
+  'net.kirgroup.Cuer.svg',
   install_dir: join_paths(
     datadir,
     'icons',
@@ -9,7 +9,7 @@ install_data(
   )
 )
 install_data(
-  'org.gnome.Cuer-symbolic.svg',
+  'net.kirgroup.Cuer-symbolic.svg',
   install_dir: join_paths(
     datadir,
     'icons',

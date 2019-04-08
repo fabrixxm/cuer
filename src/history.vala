@@ -17,7 +17,7 @@
  */
 
 namespace Cuer {
-	[GtkTemplate (ui = "/org/gnome/Cuer/history.ui")]
+	[GtkTemplate (ui = "/net/kirgroup/Cuer/history.ui")]
 	public class History : Gtk.ScrolledWindow {
 
 		[GtkChild]

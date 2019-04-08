@@ -6,4 +6,4 @@ Terminal=false
 Type=Application
 Categories=GNOME;GTK;Utility;
 StartupNotify=true
-Icon=org.gnome.Cuer
+Icon=net.kirgroup.Cuer

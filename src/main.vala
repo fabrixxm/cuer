@@ -22,7 +22,7 @@ int main (string[] args) {
 	Gst.init (ref args);
 	Notify.init ("Cuer");
 
-	var app = new Gtk.Application ("org.gnome.Cuer", ApplicationFlags.FLAGS_NONE);
+	var app = new Gtk.Application ("net.kirgroup.Cuer", ApplicationFlags.FLAGS_NONE);
 	app.activate.connect (() => {
 		var win = app.active_window;
 		if (win == null) {

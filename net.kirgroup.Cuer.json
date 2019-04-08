@@ -1,5 +1,5 @@
 {
-    "app-id" : "org.gnome.Cuer",
+    "app-id" : "net.kirgroup.Cuer",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "3.30",
     "sdk" : "org.gnome.Sdk",
@@ -63,7 +63,7 @@
         {
             "name": "quirc",
             "buildsystem": "simple",
-            "build-commands": ["CFLAGS=\"$CFLAGS -fPIC\" make libquirc.so", "install -m 0644 lib/quirc.h $C_INCLUDE_PATH", "install -m 0755 libquirc.so.* $LD_LIBRARY_PATH", "ln -s $LD_LIBRARY_PATH/libquirc.so.* $LD_LIBRARY_PATH/libquirc.so"],
+            "build-commands": ["CFLAGS=\"$CFLAGS -fPIC\" make libquirc.so", "install -m 0644 lib/quirc.h $FLATPAK_DEST/include", "install -m 0755 libquirc.so.* $FLATPAK_DEST/lib", "ln -s $FLATPAK_DEST/lib/libquirc.so.* $FLATPAK_DEST/lib/libquirc.so"],
             "sources": [
                 {
                     "type": "git",

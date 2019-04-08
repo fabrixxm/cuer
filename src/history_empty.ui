@@ -12,7 +12,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="pixel_size">128</property>
-        <property name="icon_name">org.gnome.Cuer-symbolic</property>
+        <property name="icon_name">net.kirgroup.Cuer-symbolic</property>
       </object>
       <packing>
         <property name="expand">False</property>
