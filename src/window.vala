@@ -128,20 +128,11 @@ namespace Cuer {
 
 			debug("show notification: %s", code);
 
-			string summary = "QRCode";
-			try {
-				Notify.Notification notification = new Notify.Notification (summary, code, "org.gnome.Cuer");
-				/* notification.add_action ("action-name", "Open in browser", (notification, action) => {
-					try {
-						notification.close ();
-					} catch (Error e) {
-						debug ("Error: %s", e.message);
-					}
-				});*/
-				notification.show ();
-			} catch (Error e) {
-				critical("Error: %s", e.message);
-			}
+			string summary = "Text copied in clipboard";
+
+			var notification = new Notification(summary);
+			notification.set_body(code);
+			this.application.send_notification(null, notification);
 		}
 
 		public void on_history_item_activated(string text){
