@@ -67,6 +67,7 @@ namespace Cuer {
             });
 
             history.filter = recentFilter;
+            history.activated.connect(this.on_history_item_activated);
             history.set_recent_manager(recent);
 
             adapt();
@@ -146,9 +147,8 @@ namespace Cuer {
 			}
 		}
 
-		public void on_history_item_activated(){
-			Gtk.RecentInfo r = history.get_current_item();
-			show_notification(r.get_display_name());
+		public void on_history_item_activated(string text){
+			show_notification(text);
 		}
 	}
 }

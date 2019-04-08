@@ -4,7 +4,6 @@ cuer_sources = [
   'historyempty.vala',
   'history.vala',
   'window.vala',
-  'RecentObject.vala',
 ]
 
 cuer_deps = [

@@ -22,28 +22,13 @@ namespace Cuer {
 	    public Gtk.RecentFilter filter { get; set; }
 
 		[GtkChild]
-		Gtk.ListBox listBox;
+		Gtk.Box box;
 
-        ListStore model;
 		Gtk.RecentManager recentManager;
 
-		public signal void history_item_activated();
+		public signal void activated(string text);
 
         construct {
-            var empty = new HistoryEmpty();
-            listBox.set_placeholder(empty);
-            listBox.set_header_func(this.update_header);
-
-            model = new ListStore(typeof(RecentObject));
-            listBox.bind_model(model, (obj)=>{
-                var recentObject = obj as RecentObject;
-                var row = new Hdy.ActionRow();
-                row.set_title(recentObject.info.get_display_name());
-
-                row.set_data("age", recentObject.info.get_age());
-                row.set_data("added", recentObject.info.get_added());
-                return row;
-            });
         }
 
 
@@ -53,61 +38,32 @@ namespace Cuer {
 		    this.update();
 		}
 
-		public Gtk.RecentInfo? get_current_item() {
-		    return null;
-		}
-
-        public void update_header(Gtk.ListBoxRow row, Gtk.ListBoxRow? before) {
-            int age = row.get_data("age");
-
-            var label = row.get_header() as Gtk.Label;
-            if (label == null) {
-                label = new Gtk.Label("");
-            }
-
-            if (before == null) {
-                label.set_markup("<b>%d days ago</b>".printf(age));
-                row.set_header(label);
-            } else {
-                int bage = before.get_data("age");
-                if (age != bage) {
-                    label.set_markup("<b>%d days ago</b>".printf(age));
-                    row.set_header(label);
-                } else {
-                    Hdy.list_box_separator_header(row, before, null);
-                }
-            }
-        }
-
 		private void update() {
             debug("HistoryPage update");
             var items = this.recentManager.get_items();
-            debug("items: %u", (uint) items.length);
+            debug("items: %u", (uint) items.length()  );
 
-            this.model.remove_all();
-            items.foreach((item) => {
-                if (item.has_application("cuer")) {
-                    debug("append \"%s\"", item.get_display_name());
-                    this.model.append(RecentObject.create(item));
-                }
-            });
-
-            this.model.sort((obj1, obj2)=>{
-                var item1 = obj1 as RecentObject;
-                var item2 = obj2 as RecentObject;
-                int age1 = item1.info.get_age();
-                int age2 = item2.info.get_age();
-                return age1 - age2;
-            });
-
-            /*
             this.box.foreach((child) => this.box.remove(child));
 
-            if ((uint) items.length == 0) {
+            if ((uint) items.length() == 0) {
+                this.box.valign = Gtk.Align.FILL;
                 var empty = new HistoryEmpty();
                 this.box.pack_start(empty);
                 empty.show();
             } else {
+
+                items.sort((obj1, obj2)=>{
+                    debug("Sorting");
+                    var item1 = (Gtk.RecentInfo) obj1;
+                    var item2 = (Gtk.RecentInfo) obj2;
+                    int age1 = item1.get_age();
+                    int age2 = item2.get_age();
+                    return age1 - age2;
+                });
+
+
+
+                this.box.valign = Gtk.Align.START;
                 int age = -1;
                 Gtk.ListBox listbox = new Gtk.ListBox();
                 items.foreach((item) => {
@@ -124,6 +80,11 @@ namespace Cuer {
 
                             listbox = new Gtk.ListBox();
                             listbox.set_valign(Gtk.Align.START);
+                            listbox.row_activated.connect(row => {
+                                var hrow = row as Hdy.ActionRow;
+                                debug("row activated: %s", hrow.get_title());
+                                this.activated(hrow.get_title());
+                            });
 
                             this.box.pack_start(label);
                             this.box.pack_start(listbox);
@@ -131,14 +92,15 @@ namespace Cuer {
                             listbox.show();
                         }
 
-                        var label = new Gtk.Label(null);
-                        label.set_markup(item.get_display_name());
-                        listbox.add(label);
-                        label.show();
+                        var row = new Hdy.ActionRow();
+                        row.set_title(item.get_display_name());
+                        row.set_selectable(false);
+                        listbox.add(row);
+                        row.show();
 
-                    }
+                   }
                 });
-            }*/
+            }
 		}
 	}
 }
