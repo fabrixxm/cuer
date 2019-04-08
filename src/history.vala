@@ -19,7 +19,6 @@
 namespace Cuer {
 	[GtkTemplate (ui = "/org/gnome/Cuer/history.ui")]
 	public class History : Gtk.ScrolledWindow {
-	    public Gtk.RecentFilter filter { get; set; }
 
 		[GtkChild]
 		Gtk.Box box;

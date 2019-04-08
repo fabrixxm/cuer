@@ -32,8 +32,6 @@ namespace Cuer {
 		[GtkChild]
 		Gtk.RecentManager recent;
 		[GtkChild]
-		Gtk.RecentFilter recentFilter;
-		[GtkChild]
 		History history;
 
 		[GtkChild]
@@ -66,7 +64,6 @@ namespace Cuer {
                 this.updateBtns();
             });
 
-            history.filter = recentFilter;
             history.activated.connect(this.on_history_item_activated);
             history.set_recent_manager(recent);
 
