@@ -2,7 +2,7 @@
 
 Cuer is a QRCode reader application for the GNOME desktop
 
-![ScreenShot](screenshot.png)
+![ScreenShot](screenshots/scan-desktop.png)
 
 ## Requirements:
 
