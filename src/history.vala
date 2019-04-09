@@ -80,18 +80,18 @@ namespace Cuer {
 
                         if (itemdate.compare(now) == 1) {
                             debug("now: %s", now.to_string());
-                            age = "Today";
+                            age = _("Today");
                         } else if (itemdate.compare(yesterday) == 1) {
                             debug("yesteday: %s", yesterday.to_string());
-                            age = "Yesterday";
+                            age = _("Yesterday");
                         } else if (itemdate.compare(monday) == 1) {
                             debug("monday: %s", monday.to_string());
-                            age = "This week";
+                            age = _("This week");
                         } else if (itemdate.compare(firstdom) == 1) {
                             debug("first of the month: %s", firstdom.to_string());
-                            age = "This month";
+                            age = _("This month");
                         } else {
-                            age = "Older";
+                            age = _("Older");
                         }
 
 

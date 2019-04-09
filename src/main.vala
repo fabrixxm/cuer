@@ -18,6 +18,10 @@
 
 int main (string[] args) {
 	//Gtk.init (ref args);
+    Intl.setlocale (LocaleCategory.ALL, "");
+    Intl.textdomain (Build.GETTEXT_PACKAGE);
+    debug("textdomain: %s", Build.GETTEXT_PACKAGE);
+
 	Hdy.init (ref args);
 	Gst.init (ref args);
 	Notify.init ("Cuer");

@@ -14,6 +14,13 @@ cuer_deps = [
   dependency('libhandy-0.0', version: '>= 0.0.5'),
 ]
 
+
+config_file = configure_file(
+    input: 'config.vala.in',
+    output: 'config.vala',
+    configuration: conf_data
+)
+
 gnome = import('gnome')
 
 cuer_sources += gnome.compile_resources('cuer-resources',
@@ -33,7 +40,7 @@ cuer_c_args = [
 ]
 
 
-executable('cuer', cuer_sources,
+executable('cuer', cuer_sources, config_file,
   vala_args: '--target-glib=2.50',
   dependencies: cuer_deps,
   c_args: cuer_c_args,

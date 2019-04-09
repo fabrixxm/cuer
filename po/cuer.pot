@@ -1,0 +1,62 @@
+# QRCode reader for GNOME.
+# Copyright (C) 2019
+# This file is distributed under the same license as the cuer package.
+# Fabrix Xm <fabrix.xm@gmail.com>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: cuer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-09 20:59+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/net.kirgroup.Cuer.desktop.in:3
+msgid "Cuer"
+msgstr ""
+
+#: data/net.kirgroup.Cuer.desktop.in:4
+msgid "Read QRCodes"
+msgstr ""
+
+#: data/net.kirgroup.Cuer.desktop.in:10
+msgid "net.kirgroup.Cuer"
+msgstr ""
+
+#: src/window.ui:74
+msgid "Scan"
+msgstr ""
+
+#: src/window.ui:84
+msgid "History"
+msgstr ""
+
+#: src/history.vala:83
+msgid "Today"
+msgstr ""
+
+#: src/history.vala:86
+msgid "Yesterday"
+msgstr ""
+
+#: src/history.vala:89
+msgid "This week"
+msgstr ""
+
+#: src/history.vala:92
+msgid "This month"
+msgstr ""
+
+#: src/history.vala:94
+msgid "Older"
+msgstr ""
+
+#: src/history.vala:125
+msgid "%e %b %Y %l:%M %P"
+msgstr ""
