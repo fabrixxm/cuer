@@ -37,6 +37,7 @@ namespace Cuer {
 		    this.update();
 		}
 
+
 		private void update() {
             debug("HistoryPage update");
             var items = this.recentManager.get_items();
@@ -51,8 +52,13 @@ namespace Cuer {
                 empty.show();
             } else {
 
+                var now = new DateTime.now_local();
+                now = now.add_full(0,0,0, -now.get_hour(), -now.get_minute(), -now.get_second());
+                var yesterday = now.add_days(-1);
+                var monday = now.add_days( 1 - now.get_day_of_week());
+                var firstdom = now.add_days( 1 - now.get_day_of_month());
+
                 items.sort((obj1, obj2)=>{
-                    debug("Sorting");
                     var item1 = (Gtk.RecentInfo) obj1;
                     var item2 = (Gtk.RecentInfo) obj2;
                     int age1 = item1.get_age();
@@ -63,14 +69,35 @@ namespace Cuer {
 
 
                 this.box.valign = Gtk.Align.START;
-                int age = -1;
+                string age = "";
+                string lastage = "";
                 Gtk.ListBox listbox = new Gtk.ListBox();
                 items.foreach((item) => {
                     if (item.has_application("cuer")) {
-                        if (item.get_age() != age) {
-                            age = item.get_age();
+                        //var itemdate = now.add_days(-item.get_age());
+                        var itemdate = new DateTime.from_unix_local(item.get_added());
+                        debug("itemdate: %s", itemdate.to_string());
+
+                        if (itemdate.compare(now) == 1) {
+                            debug("now: %s", now.to_string());
+                            age = "Today";
+                        } else if (itemdate.compare(yesterday) == 1) {
+                            debug("yesteday: %s", yesterday.to_string());
+                            age = "Yesterday";
+                        } else if (itemdate.compare(monday) == 1) {
+                            debug("monday: %s", monday.to_string());
+                            age = "This week";
+                        } else if (itemdate.compare(firstdom) == 1) {
+                            debug("first of the month: %s", firstdom.to_string());
+                            age = "This month";
+                        } else {
+                            age = "Older";
+                        }
+
+
+                        if (lastage != age) {
                             var label = new Gtk.Label(null);
-                            label.set_markup("<b>%d days ago</b>".printf(age));
+                            label.set_markup("<b>%s</b>".printf(age));
                             //label.set_line_wrap(true);
                             //label.set_line_wrap_mode(Pango.WrapMode.WORD);
                             label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
@@ -89,10 +116,13 @@ namespace Cuer {
                             this.box.pack_start(listbox);
                             label.show();
                             listbox.show();
+
+                            lastage = age;
                         }
 
                         var row = new Hdy.ActionRow();
                         row.set_title(item.get_display_name());
+                        row.set_subtitle(itemdate.format(_("%e %b %Y %l:%M %P")));
                         row.set_selectable(false);
                         listbox.add(row);
                         row.show();
