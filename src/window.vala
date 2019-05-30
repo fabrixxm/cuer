@@ -39,7 +39,7 @@ namespace Cuer {
 		[GtkChild]
 		Gtk.StackSwitcher bottomStackSwitcher;
 
-
+        private Gst.DeviceMonitor monitor;
 
 
 		construct {
@@ -52,6 +52,8 @@ namespace Cuer {
 
             //var styleContext = get_style_context();
             get_style_context().add_provider(cssProvider, 1);
+
+            this.setup_device_monitor();
 
 			camera.notify["state"].connect(this.updateBtns);
 
@@ -68,6 +70,38 @@ namespace Cuer {
             history.set_recent_manager(recent);
 
             adapt();
+		}
+
+		public bool device_monitor_bus_watch(Gst.Bus bus, Gst.Message message) {
+		    Gst.Device device;
+            switch( message.type) {
+                case Gst.MessageType.DEVICE_ADDED:
+                    message.parse_device_added(out device);
+                    debug("Device added: %s", device.get_display_name());
+                    break;
+                case Gst.MessageType.DEVICE_REMOVED:
+                    message.parse_device_removed(out device);
+                    debug("Device removed: %s", device.get_display_name());
+                    break;
+
+            }
+
+		    return Source.CONTINUE;
+		}
+
+		private void setup_device_monitor() {
+		    this.monitor = new Gst.DeviceMonitor();
+
+		    var bus = monitor.get_bus();
+		    bus.add_watch(Priority.DEFAULT, this.device_monitor_bus_watch );
+
+		    var caps = new Gst.Caps.empty_simple("video/x-raw");
+            this.monitor.add_filter("Video/Source", caps);
+
+            this.monitor.start();
+
+            var devices = this.monitor.get_devices();
+            devices.foreach((dev)=>{ debug(dev.get_display_name()); });
 		}
 
 		private void adapt() {
