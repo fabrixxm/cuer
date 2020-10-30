@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <!-- Icons -->
-  <gresource prefix="/net/kirgroup/todo/icons">
+  <gresource prefix="/net/kirgroup/Cuer/icons">
     <!--<file preprocess="xml-stripblanks" alias="scalable/actions/drag-handle-symbolic.svg">hicolor/symbolic/actions/drag-handle-symbolic.svg</file>-->
   </gresource>
 </gresources>

@@ -3,7 +3,7 @@
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "3.36",
     "sdk" : "org.gnome.Sdk",
-    "command" : "cuer",
+    "command" : "net.kirgroup.Cuer",
     "tags" : [
         "devel",
         "development",
@@ -84,7 +84,7 @@
             ]
         },
         {
-            "name" : "cuer",
+            "name" : "net.kirgroup.Cuer",
             "buildsystem" : "meson",
             "config-opts" : [
                 "--libdir=lib"

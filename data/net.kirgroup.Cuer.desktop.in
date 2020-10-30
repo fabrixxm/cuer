@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Cuer
 Comment=Read QRCodes
-Exec=cuer
+Exec=net.kirgroup.Cuer
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Utility;

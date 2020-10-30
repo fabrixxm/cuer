@@ -41,7 +41,7 @@ cuer_c_args = [
 ]
 
 
-executable('cuer', cuer_sources, config_file,
+executable('net.kirgroup.Cuer', cuer_sources, config_file,
   vala_args: '--target-glib=2.50',
   dependencies: cuer_deps,
   c_args: cuer_c_args,

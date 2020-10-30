@@ -1,4 +1,4 @@
-project('cuer','c', 'vala',
+project('net.kirgroup.Cuer','c', 'vala',
   version: '0.3.0',
   meson_version: '>= 0.40.0',
 )
