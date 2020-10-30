@@ -165,7 +165,7 @@ namespace Cuer {
 
             var notif = new NotificationOverlay();
             overlay.add_overlay(notif);
-            notif.show("<b>" + code + "</b>\n<small>Text copied in clipboard</small>");
+            notif.show("<b>" + code + "</b>\n<small>" + _("Text copied in clipboard") + "</small>");
 		}
 
 		public void on_history_item_activated(string text){

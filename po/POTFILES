@@ -5,6 +5,10 @@ src/window.ui
 src/main.vala
 src/window.vala
 src/camera.vala
+src/history_empty.ui
 src/historyempty.vala
+src/history.ui
 src/history.vala
+src/notification_overlay.ui
+src/notification_overlay.vala
 

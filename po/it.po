@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cuer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 20:59+0200\n"
+"POT-Creation-Date: 2020-10-30 16:49+0100\n"
 "PO-Revision-Date: 2019-04-09 21:00+0200\n"
 "Last-Translator: Fabrix Xm <fabrix.xm@gmail.com>\n"
 "Language-Team: Italiano <>\n"
@@ -26,17 +26,21 @@ msgstr "Cuer"
 msgid "Read QRCodes"
 msgstr "Leggi QRCode"
 
-#: data/net.kirgroup.Cuer.desktop.in:10
-msgid "net.kirgroup.Cuer"
-msgstr "net.kirgroup.Cuer"
-
-#: src/window.ui:74
+#: src/window.ui:32
 msgid "Scan"
 msgstr "Scansiona"
 
-#: src/window.ui:84
+#: src/window.ui:43
 msgid "History"
 msgstr "Storia"
+
+#: src/window.vala:168
+msgid "Text copied in clipboard"
+msgstr ""
+
+#: src/history_empty.ui:27
+msgid "No Hystory Yet"
+msgstr ""
 
 #: src/history.vala:83
 msgid "Today"
@@ -58,6 +62,9 @@ msgstr "Questo mese"
 msgid "Older"
 msgstr "Più vecchi"
 
-#: src/history.vala:125
+#: src/history.vala:128
 msgid "%e %b %Y %l:%M %P"
 msgstr "%e %b %Y %H:%M"
+
+#~ msgid "net.kirgroup.Cuer"
+#~ msgstr "net.kirgroup.Cuer"

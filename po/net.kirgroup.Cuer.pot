@@ -1,14 +1,14 @@
-# QRCode reader for GNOME.
-# Copyright (C) 2019
-# This file is distributed under the same license as the cuer package.
-# Fabrix Xm <fabrix.xm@gmail.com>, 2019.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the net.kirgroup.Cuer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: cuer\n"
+"Project-Id-Version: net.kirgroup.Cuer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 20:59+0200\n"
+"POT-Creation-Date: 2020-10-30 16:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,20 @@ msgstr ""
 msgid "Read QRCodes"
 msgstr ""
 
-#: data/net.kirgroup.Cuer.desktop.in:10
-msgid "net.kirgroup.Cuer"
-msgstr ""
-
-#: src/window.ui:74
+#: src/window.ui:32
 msgid "Scan"
 msgstr ""
 
-#: src/window.ui:84
+#: src/window.ui:43
 msgid "History"
+msgstr ""
+
+#: src/window.vala:168
+msgid "Text copied in clipboard"
+msgstr ""
+
+#: src/history_empty.ui:27
+msgid "No Hystory Yet"
 msgstr ""
 
 #: src/history.vala:83
@@ -57,6 +61,6 @@ msgstr ""
 msgid "Older"
 msgstr ""
 
-#: src/history.vala:125
+#: src/history.vala:128
 msgid "%e %b %Y %l:%M %P"
 msgstr ""
