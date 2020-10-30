@@ -60,6 +60,12 @@ namespace Cuer {
 				return;
 			}
 
+            // stop pipeline on output widget destroy
+			video_area.destroy.connect(() => {
+			    this.pipeline.set_state(Gst.State.NULL);
+			});
+
+
 			// qrcode event
 			//Signal.connect_swapped(qrcodedec, "qrcode", (Callback) on_qrcode, this);
 			// qrcodedec.qrcode.connect(on_qrcode);
@@ -72,7 +78,7 @@ namespace Cuer {
 		}
 
 		~Camera() {
-			pipeline.set_state (Gst.State.NULL);
+			pipeline.set_state(Gst.State.NULL);
 		}
 
 		private bool bus_callback (Gst.Bus bus, Gst.Message message) {
