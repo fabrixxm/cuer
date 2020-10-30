@@ -16,20 +16,26 @@ if desktop_utils.found()
   )
 endif
 
-appstream_file = i18n.merge_file(
-  input: 'net.kirgroup.Cuer.appdata.xml.in',
-  output: 'net.kirgroup.Cuer.appdata.xml',
-  po_dir: '../po',
-  install: true,
-  install_dir: join_paths(get_option('datadir'), 'appdata')
+metainfo_file = 'net.kirgroup.Cuer.metainfo.xml.in'
+i18n.merge_file(
+    input:  metainfo_file,
+    output: 'net.kirgroup.Cuer.metainfo.xml',
+    type: 'xml',
+    po_dir: join_paths (meson.source_root(), 'po'),
+    install: true,
+    install_dir: join_paths (get_option ('datadir'), 'metainfo')
 )
-
 appstream_util = find_program('appstream-util', required: false)
 if appstream_util.found()
-  test('Validate appstream file', appstream_util,
-    args: ['validate', appstream_file]
+  test('validate metainfo file',
+        appstream_util,
+        args: ['validate',
+               '--no-net',
+               '--pedantic',
+               metainfo_file]
   )
 endif
+
 
 install_data('net.kirgroup.Cuer.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')

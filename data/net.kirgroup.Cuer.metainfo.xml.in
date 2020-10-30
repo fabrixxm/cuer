@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.kirgroup.Cuer</id>
+  
+  <name>Cuer</name>
+  <summary>QRCode scanner for GNOME</summary>
+  
+  <metadata_license>CC-BY-4.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </recommends>
+  
+  <description>
+    <p>
+      Cuer is a simple QRCode scanner application for GNOME.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">net.kirgroup.Cuer.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/fabrixxm/cuer/master/screenshots/scan-desktop.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/fabrixxm/cuer/master/screenshots/history-desktop.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/fabrixxm/cuer/master/screenshots/scan-mobile.png</image>
+    </screenshot>
+  </screenshots>
+</component>
