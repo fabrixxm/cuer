@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cuer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-30 16:49+0100\n"
+"POT-Creation-Date: 2020-10-30 16:52+0100\n"
 "PO-Revision-Date: 2019-05-27 22:03+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -39,7 +39,7 @@ msgid "Text copied in clipboard"
 msgstr ""
 
 #: src/history_empty.ui:27
-msgid "No Hystory Yet"
+msgid "No Scans Yet"
 msgstr ""
 
 #: src/history.vala:83
