@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cuer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-30 16:52+0100\n"
-"PO-Revision-Date: 2020-10-30 16:53+0100\n"
+"POT-Creation-Date: 2020-10-30 17:33+0100\n"
+"PO-Revision-Date: 2020-10-30 17:33+0100\n"
 "Last-Translator: Fabrix Xm <fabrix.xm@gmail.com>\n"
 "Language-Team: Italiano <>\n"
 "Language: it\n"
@@ -18,13 +18,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 3.38.0\n"
 
-#: data/net.kirgroup.Cuer.desktop.in:3
+#: data/net.kirgroup.Cuer.desktop.in:3 data/net.kirgroup.Cuer.metainfo.xml.in:5
 msgid "Cuer"
 msgstr "Cuer"
 
-#: data/net.kirgroup.Cuer.desktop.in:4
+#: data/net.kirgroup.Cuer.desktop.in:4 data/net.kirgroup.Cuer.metainfo.xml.in:6
 msgid "Read QRCodes"
 msgstr "Leggi QRCode"
+
+#: data/net.kirgroup.Cuer.metainfo.xml.in:18
+msgid "Cuer is a simple QRCode reader for GNOME."
+msgstr "Cuer è un semplice lettore di QRCode per GNOME"
 
 #: src/window.ui:32
 msgid "Scan"

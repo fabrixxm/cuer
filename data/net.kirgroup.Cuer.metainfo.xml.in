@@ -3,7 +3,7 @@
   <id>net.kirgroup.Cuer</id>
   
   <name>Cuer</name>
-  <summary>QRCode scanner for GNOME</summary>
+  <summary>Read QRCodes</summary>
   
   <metadata_license>CC-BY-4.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
@@ -16,7 +16,7 @@
   
   <description>
     <p>
-      Cuer is a simple QRCode scanner application for GNOME.
+      Cuer is a simple QRCode reader for GNOME.
     </p>
   </description>
   
