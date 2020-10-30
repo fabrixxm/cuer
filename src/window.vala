@@ -26,6 +26,9 @@ namespace Cuer {
 		Gtk.Button btnCameraStop;
 		[GtkChild]
 		Gtk.Button btnCameraPlay;
+
+		[GtkChild]
+		Gtk.Overlay overlay;
 		[GtkChild]
 		Gtk.Stack stack;
 
@@ -160,11 +163,9 @@ namespace Cuer {
 
 			debug("show notification: %s", code);
 
-			string summary = "Text copied in clipboard";
-
-			var notification = new Notification(summary);
-			notification.set_body(code);
-			this.application.send_notification(null, notification);
+            var notif = new NotificationOverlay();
+            overlay.add_overlay(notif);
+            notif.show("<b>" + code + "</b>\n<small>Text copied in clipboard</small>");
 		}
 
 		public void on_history_item_activated(string text){

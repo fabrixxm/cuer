@@ -9,58 +9,67 @@
     <property name="default-height">600</property>
     <property name="show-menubar">False</property>
     <child>
-      <object class="GtkBox">
-        <property name="visible">True</property>
+      <object class="GtkOverlay" id="overlay">
         <property name="can-focus">False</property>
-        <property name="orientation">vertical</property>
+        <property name="visible">True</property>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="events">GDK_STRUCTURE_MASK | GDK_PROPERTY_CHANGE_MASK</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="CuerCamera" id="camera">
+              <object class="GtkStack" id="stack">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
+                <property name="events">GDK_STRUCTURE_MASK | GDK_PROPERTY_CHANGE_MASK</property>
+                <child>
+                  <object class="CuerCamera" id="camera">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="name">page_scan</property>
+                    <property name="title" translatable="yes">Scan</property>
+                    <property name="icon-name">net.kirgroup.Cuer-symbolic</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="CuerHistory" id="history">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="name">page_history</property>
+                    <property name="title" translatable="yes">History</property>
+                    <property name="icon-name">document-open-recent-symbolic</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
               </object>
               <packing>
-                <property name="name">page_scan</property>
-                <property name="title" translatable="yes">Scan</property>
-                <property name="icon-name">net.kirgroup.Cuer-symbolic</property>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
               </packing>
             </child>
             <child>
-              <object class="CuerHistory" id="history">
+              <object class="HdyViewSwitcherBar" id="bottomStackSwitcher">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
+                <property name="halign">center</property>
+                <property name="policy">auto</property>
+                <property name="stack">stack</property>
               </object>
               <packing>
-                <property name="name">page_history</property>
-                <property name="title" translatable="yes">History</property>
-                <property name="icon-name">document-open-recent-symbolic</property>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack-type">end</property>
                 <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="HdyViewSwitcherBar" id="bottomStackSwitcher">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="halign">center</property>
-            <property name="policy">auto</property>
-            <property name="stack">stack</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack-type">end</property>
-            <property name="position">1</property>
+            <property name="index">-1</property>
           </packing>
         </child>
       </object>

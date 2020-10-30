@@ -4,6 +4,7 @@ cuer_sources = [
   'historyempty.vala',
   'history.vala',
   'window.vala',
+  'notification_overlay.vala',
 ]
 
 cuer_deps = [

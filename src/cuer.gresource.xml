@@ -4,6 +4,7 @@
     <file>window.ui</file>
     <file>history.ui</file>
     <file>history_empty.ui</file>
+    <file>notification_overlay.ui</file>
     <file>cuer.css</file>
   </gresource>
 </gresources>
