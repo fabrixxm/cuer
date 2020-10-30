@@ -1,4 +1,4 @@
-/* window.vala
+/* history.vala
  *
  * Copyright (C) 2018 fabrixxm
  *
@@ -112,10 +112,13 @@ namespace Cuer {
                                 this.activated(hrow.get_title());
                             });
 
+                            var frame = new Gtk.Frame(null);
+                            frame.add(listbox);
+
                             this.box.pack_start(label);
-                            this.box.pack_start(listbox);
+                            this.box.pack_start(frame);
                             label.show();
-                            listbox.show();
+                            frame.show_all();
 
                             lastage = age;
                         }
@@ -123,6 +126,7 @@ namespace Cuer {
                         var row = new Hdy.ActionRow();
                         row.set_title(item.get_display_name());
                         row.set_subtitle(itemdate.format(_("%e %b %Y %l:%M %P")));
+                        row.set_activatable(true);
                         row.set_selectable(false);
                         listbox.add(row);
                         row.show();
