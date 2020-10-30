@@ -11,7 +11,7 @@
 - gstreamer >= 1.0
 - [gst-plugin-qrcode](https://github.com/fabrixxm/gst-plugin-qrcode) >= 0.2.0 ([AUR](https://aur.archlinux.org/packages/gst-plugin-qrcode/))
 - Gtk >= 3.10
-- [libhandy](https://source.puri.sm/Librem5/libhandy) >= 0.0.8 
+- [libhandy](https://source.puri.sm/Librem5/libhandy) >= 1.0.0
 
 to build:
 
@@ -22,9 +22,8 @@ to build:
 
 ## Build
 
-	$ meson builddir
-	$ cd builddir
-	$ ninja
-	$ ./src/cuer
+	$ meson _build
+	$ ninja -C _build
+	$ ./_build/src/net.kirgroup.Cuer
 
 or use GNOME Builder.

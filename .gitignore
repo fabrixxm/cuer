@@ -1,3 +1,3 @@
 .buildconfig
 *~
-builddir/
+_build
