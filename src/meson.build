@@ -11,7 +11,7 @@ cuer_deps = [
   dependency('gtk+-3.0', version: '>= 3.22'),
   dependency('gstreamer-1.0', version: '>= 1.0'),
   dependency('libnotify', version: '>= 0.7'),
-  dependency('libhandy-0.0', version: '>= 0.0.5'),
+  dependency('libhandy-1', version: '>= 1.0'),
 ]
 
 

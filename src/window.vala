@@ -35,9 +35,9 @@ namespace Cuer {
 		History history;
 
 		[GtkChild]
-		Gtk.StackSwitcher topStackSwitcher;
+		Hdy.ViewSwitcher topStackSwitcher;
 		[GtkChild]
-		Gtk.StackSwitcher bottomStackSwitcher;
+		Hdy.ViewSwitcherBar bottomStackSwitcher;
 
         private Gst.DeviceMonitor monitor;
 
@@ -83,7 +83,8 @@ namespace Cuer {
                     message.parse_device_removed(out device);
                     debug("Device removed: %s", device.get_display_name());
                     break;
-
+                default:
+                    break;
             }
 
 		    return Source.CONTINUE;
@@ -101,22 +102,19 @@ namespace Cuer {
             this.monitor.start();
 
             var devices = this.monitor.get_devices();
-            devices.foreach((dev)=>{ debug(dev.get_display_name()); });
+            devices.foreach((dev)=>{
+                debug(dev.get_display_name());
+            });
 		}
 
 		private void adapt() {
+		    // this will toggle switcher at precise sizes,
+		    // instead I could connect to squeezer's "notify::visible-child", let
+		    // squeezer decide when hide top switcher and set bottom switcher reveal
+		    // when top switcher is hidden...
             int w = get_allocated_width();
             topStackSwitcher.set_visible( w >= 700 );
-            bottomStackSwitcher.set_visible( w < 700 );
-            /*
-            if (w >= 700) {
-                stack.child_set_property(camera, "icon-name", "");
-                stack.child_set_property(history, "icon-name", "");
-            } else {
-                stack.child_set_property(camera, "icon-name", "net.kirgroup.Cuer-symbolic");
-                stack.child_set_property(history, "icon-name", "document-open-recent-symbolic");
-            }
-            */
+            bottomStackSwitcher.set_reveal( w < 700 );
 		}
 
 		private bool configure_callback(Gtk.Widget window, Gdk.EventConfigure event) {

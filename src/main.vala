@@ -22,11 +22,13 @@ int main (string[] args) {
     Intl.textdomain (Build.GETTEXT_PACKAGE);
     debug("textdomain: %s", Build.GETTEXT_PACKAGE);
 
-	Hdy.init (ref args);
-	Gst.init (ref args);
-	Notify.init ("Cuer");
 
 	var app = new Gtk.Application ("net.kirgroup.Cuer", ApplicationFlags.FLAGS_NONE);
+	app.startup.connect (() => {
+    	Hdy.init ();
+	    Gst.init (ref args);
+	    Notify.init ("Cuer");
+	});
 	app.activate.connect (() => {
 		var win = app.active_window;
 		if (win == null) {

@@ -1,68 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.38.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
+  <requires lib="libhandy" version="0.0"/>
   <template class="CuerWindow" parent="GtkApplicationWindow">
-    <property name="can_focus">False</property>
-    <property name="default_width">800</property>
-    <property name="default_height">600</property>
-    <property name="show_menubar">False</property>
-    <child type="titlebar">
-      <object class="GtkHeaderBar" id="header_bar">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="show_close_button">True</property>
-        <child>
-          <object class="GtkButton" id="btnCameraStop">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="always_show_image">True</property>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">media-playback-pause-symbolic</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="btnCameraPlay">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="always_show_image">True</property>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">media-playback-start-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child type="title">
-          <object class="GtkStackSwitcher" id="topStackSwitcher">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stack">stack</property>
-          </object>
-        </child>
-      </object>
-    </child>
+    <property name="can-focus">False</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
+    <property name="show-menubar">False</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkStack" id="stack">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="events">GDK_STRUCTURE_MASK | GDK_PROPERTY_CHANGE_MASK</property>
             <child>
               <object class="CuerCamera" id="camera">
@@ -72,6 +26,7 @@
               <packing>
                 <property name="name">page_scan</property>
                 <property name="title" translatable="yes">Scan</property>
+                <property name="icon-name">net.kirgroup.Cuer-symbolic</property>
               </packing>
             </child>
             <child>
@@ -82,6 +37,7 @@
               <packing>
                 <property name="name">page_history</property>
                 <property name="title" translatable="yes">History</property>
+                <property name="icon-name">document-open-recent-symbolic</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -93,18 +49,79 @@
           </packing>
         </child>
         <child>
-          <object class="GtkStackSwitcher" id="bottomStackSwitcher">
-            <property name="can_focus">False</property>
+          <object class="HdyViewSwitcherBar" id="bottomStackSwitcher">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
             <property name="halign">center</property>
-            <property name="margin_top">10</property>
-            <property name="margin_bottom">10</property>
-            <property name="icon_size">5</property>
+            <property name="policy">auto</property>
             <property name="stack">stack</property>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="pack_type">end</property>
+            <property name="pack-type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="HdyHeaderBar" id="header_bar">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="hexpand">True</property>
+        <property name="show-close-button">True</property>
+        <child type="title">
+          <object class="HdySqueezer">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="HdyViewSwitcher" id="topStackSwitcher">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="policy">wide</property>
+                <property name="stack">stack</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label">Cuer</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="btnCameraStop">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="always-show-image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">media-playback-pause-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="btnCameraPlay">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="always-show-image">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="icon-name">media-playback-start-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
             <property name="position">1</property>
           </packing>
         </child>

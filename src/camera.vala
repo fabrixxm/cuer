@@ -34,7 +34,7 @@ namespace Cuer {
 		}
 
 		construct {
-			Gtk.Widget video_area;
+		    Gtk.Widget video_area;
 
 			var source = ElementFactory.make ("v4l2src", "source");
 			var videoconvert1 = ElementFactory.make ("videoconvert", "convert1");
@@ -62,23 +62,10 @@ namespace Cuer {
 
 			// qrcode event
 			//Signal.connect_swapped(qrcodedec, "qrcode", (Callback) on_qrcode, this);
-
-
 			// qrcodedec.qrcode.connect(on_qrcode);
-
-
 			Gst.Bus bus = pipeline.get_bus();
 			bus.add_watch (0, bus_callback);
 
-			/*
- 			var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-    	    vbox.pack_start (video_area);
-
-
-			Gtk.Label label = new Gtk.Label("Cam");
-			vbox.pack_start(label, false);
-
-			add(vbox);*/
 			add(video_area);
 
 			show_all();

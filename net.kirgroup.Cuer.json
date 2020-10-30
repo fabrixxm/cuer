@@ -50,8 +50,8 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://source.puri.sm/Librem5/libhandy.git",
-                    "tag" : "v0.0.9"
+                    "url" : "https://gitlab.gnome.org/GNOME/libhandy.git",
+                    "tag" : "v1.0.0"
                 }
             ]
         },

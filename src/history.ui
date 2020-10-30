@@ -13,15 +13,15 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="HdyColumn">
+          <object class="HdyClamp">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_left">8</property>
             <property name="margin_right">8</property>
             <property name="margin_top">16</property>
             <property name="margin_bottom">16</property>
-            <property name="maximum_width">600</property>
-            <property name="linear_growth_width">500</property>
+            <property name="maximum_size">600</property>
+            <property name="tightening-threshold">500</property>
             <child>
               <object class="GtkBox" id="box">
                 <property name="visible">True</property>
